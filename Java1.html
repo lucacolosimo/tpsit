@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottoni con Funzioni</title>
+    <style>
+        /* Stilizzazione di base */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        /* Stile per i bottoni */
+        .btn {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-1 {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-1:hover {
+            background-color: #45a049;
+        }
+
+        .btn-2 {
+            background-color: #008CBA;
+            color: white;
+        }
+
+        .btn-2:hover {
+            background-color: #007bb5;
+        }
+
+        .btn-3 {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .btn-3:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-1" onclick="alertFunction1()">Funzione 1</button>
+        <button class="btn btn-2" onclick="alertFunction2()">Funzione 2</button>
+        <button class="btn btn-3" onclick="alertFunction3()">Funzione 3</button>
+    </div>
+
+    <script>
+        // Funzione che mostra il primo messaggio
+        function alertFunction1() {
+            alert("Hai cliccato il primo bottone!");
+        }
+
+        // Funzione che mostra il secondo messaggio
+        function alertFunction2() {
+            alert("Hai cliccato il secondo bottone!");
+        }
+
+        // Funzione che mostra il terzo messaggio
+        function alertFunction3() {
+            alert("Hai cliccato il terzo bottone!");
+        }
+    </script>
+</body>
+</html>
