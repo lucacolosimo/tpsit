@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aforismi di Scienziati</title>
+    <style>
+        .aforismo {
+            margin-bottom: 20px;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="aforismo">
+        <p id="aforismo1">"La scienza è un modo di pensare molto più che un corpo di conoscenze." - Carl Sagan</p>
+        <button onclick="nascondiTesto('aforismo1')">Nascondi Aforisma 1</button>
+    </div>
+    
+    <div class="aforismo">
+        <p id="aforismo2">"Tutto ciò che è esistito, esiste, o esisterà, è solo materia che si trasforma." - Albert Einstein</p>
+        <button onclick="nascondiTesto('aforismo2')">Nascondi Aforisma 2</button>
+    </div>
+    
+    <div class="aforismo">
+        <p id="aforismo3">"L'immaginazione è più importante della conoscenza." - Albert Einstein</p>
+        <button onclick="nascondiTesto('aforismo3')">Nascondi Aforisma 3</button>
+    </div>
+    
+    <div class="aforismo">
+        <p id="aforismo4">"Non possiamo risolvere i nostri problemi con lo stesso tipo di pensiero che abbiamo usato quando li abbiamo creati." - Albert Einstein</p>
+        <button onclick="nascondiTesto('aforismo4')">Nascondi Aforisma 4</button>
+    </div>
+    
+    <div class="aforismo">
+        <p id="aforismo5">"La natura non fa nulla di inutile." - Aristotele</p>
+        <button onclick="nascondiTesto('aforismo5')">Nascondi Aforisma 5</button>
+    </div>
+
+    <script>
+        function nascondiTesto(id) {
+            const testo = document.getElementById(id);
+            testo.style.display = "none"; 
+        }
+    </script>
+</body>
+</html>
