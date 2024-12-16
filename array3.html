@@ -18,16 +18,16 @@
     }
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(10, 1fr); /* 10 colonne */
-      gap: 1px; /* Spazio tra le celle */
+      grid-template-columns: repeat(10, 1fr);
+      gap: 1px; 
     }
     .prime {
-      background-color: yellow;  /* Colore di evidenziazione per i numeri primi */
-      color: red;  /* Colore del testo per i numeri primi */
-      font-weight: bold;  /* Rende il testo in grassetto */
+      background-color: yellow;  
+      color: red;  
+      font-weight: bold;  
     }
     .non-prime {
-      background-color: #f8f9fa; /* Colore di default per i numeri non primi */
+      background-color: #f8f9fa; 
     }
   </style>
 </head>
@@ -38,18 +38,17 @@
       <!-- Generazione 1000 celle -->
       <script>
         function IsPrime(n) {  
-          if (n <= 1) return false;  // I numeri <= 1 non sono primi
-          for (let i = 2; i <= Math.sqrt(n); i++) {  // Fino alla radice quadrata di n
+          if (n <= 1) return false; 
+          for (let i = 2; i <= Math.sqrt(n); i++) { 
             if (n % i === 0) return false;
           }
           return true;
         }
 
-        // Funzione per generare le celle da 1 a 1000
+    
         for (let i = 1; i <= 1000; i++) {
-          let primeClass = IsPrime(i) ? 'prime' : 'non-prime';  // Se il numero è primo, applica la classe 'prime'
+          let primeClass = IsPrime(i) ? 'prime' : 'non-prime'; 
 
-          // Aggiungi il div per ogni numero
           document.write('<div class="cell ' + primeClass + '">' + i + '</div>');
         }
       </script>
