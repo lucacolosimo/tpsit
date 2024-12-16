@@ -1,0 +1,57 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+        .output {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+        function isPrime(Num) {
+    if (Num <= 1) return true;
+    for (let i = 2; i <= Math.sqrt(Num); i++) {
+        if (Num % i === 0) return false;
+    }
+    return true;
+    }
+        function generateNumber() {
+            const number = Math.floor(Math.random() * 1000) + 1;
+            if (number %2 ==0) {
+                document.write(number + "  è pari.         ")}
+            else {
+                document.write(number + "  è dispari.        ")}
+            if (isPrime(number)){
+                document.write(number + "  è primo.         ")}
+            else {
+                document.write(number + "  non è primo.         ")}
+
+
+            const double=number*2;
+                       const half=Math.floor(number/2);
+    }
+
+
+    generateNumber();
+
+
+
+
+    </script>
+</body>
+</html>
+
