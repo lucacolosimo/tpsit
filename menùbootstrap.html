@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Menù git con Bootstrap</title>
+
+    <style>
+      .card { margin-bottom: 30px; }
+      .search-bar { margin: 40px 0; }
+      .section-title { margin-top: 40px; }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          Menù github con Bootstrap
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#html-css-section">HTML/CSS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#javascript-section">JavaScript</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5 text-center">
+      <h1>Benvenuti nel mio menù di git hub. Io sono Luca Colosimo e qui potrete vedere tutti i miei esercizi svolti, sia HTML/CSS che JAVA!</h1>
+      <p class="lead">Trova l' esercizio che ti serve!</p>
+      <input id="search-input" class="form-control search-bar" type="text" placeholder="Cerca HTML, CSS, JavaScript..." onkeyup="filterCards()" />
+    </div>
+
+    <!-- HTML/CSS Section -->
+    <div class="container" id="html-css-section">
+      <h2 class="section-title text-center">Esercizi HTML/CSS</h2>
+      <div class="row" id="card-container">
+        <!-- Card HTML -->
+        <div class="col-md-3 card-wrapper" data-tags="html">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">HTML: Introduzione</h5>
+              <p class="card-text">Scopri le basi di HTML, come creare la struttura di una pagina web.</p>
+              <a href="https://lucacolosimo.github.io/tpsit/schedapersonale2.html" class="btn btn-primary">Vai alla scheda personale</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card CSS -->
+        <div class="col-md-3 card-wrapper" data-tags="css">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">CSS:</h5>
+              <p class="card-text">Impara a dare stile alle tue pagine con il CSS.</p>
+              <a href="https://lucacolosimo.github.io/tpsit/boxmodel1.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card CSS 2 -->
+        <div class="col-md-3 card-wrapper" data-tags="css">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">CSS:</h5>
+              <p class="card-text">Flipcard </p>
+              <a href="https://www.example.com" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Section -->
+    <div class="container" id="javascript-section">
+      <h2 class="section-title text-center">Esercizi JavaScript</h2>
+      <div class="row">
+        <!-- Card 1 (JavaScript) -->
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript: Introduzione</h5>
+              <p class="card-text">Impara i fondamenti di JavaScript per rendere le tue pagine interattive.</p>
+              <a href="https://lucacolosimo.github.io/tpsit/Java1.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript:</h5>
+              <p class="card-text">J2</p>
+              <a href="https://lucacolosimo.github.io/tpsit/Java2.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript:</h5>
+              <p class="card-text">J3</p>
+              <a href="https://lucacolosimo.github.io/tpsit/j3.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript:</h5>
+              <p class="card-text">J4</p>
+              <a href="https://lucacolosimo.github.io/tpsit/j4.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript:</h5>
+              <p class="card-text">J5</p>
+              <a href="https://lucacolosimo.github.io/tpsit/j5.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript:</h5>
+              <p class="card-text">Morrabot</p>
+              <a href="https://lucacolosimo.github.io/tpsit/Morrabotlezione.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript:</h5>
+              <p class="card-text">J5 set</p>
+              <a href="https://lucacolosimo.github.io/tpsit/js5%20set.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript:</h5>
+              <p class="card-text">Array1</p>
+              <a href="https://lucacolosimo.github.io/tpsit/ARRAY1.HTML" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript:</h5>
+              <p class="card-text">Array2</p>
+              <a href="https://lucacolosimo.github.io/tpsit/Array2.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript:</h5>
+              <p class="card-text">Array3</p>
+              <a href="https://lucacolosimo.github.io/tpsit/array3.html" class="btn btn-primary">Vai all'esercizio</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 card-wrapper" data-tags="javascript">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript: Fetch API</h5>
+             
