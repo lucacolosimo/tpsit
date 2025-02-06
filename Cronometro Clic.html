@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bottoni e Tempo</title>
+</head>
+<body>
+
+  <button onclick="mostraDataOra()">Bottone 1</button>
+  <button onclick="calcolaTempo(1)">Bottone 2</button>
+  <button onclick="calcolaTempo(2)">Bottone 3</button>
+  <button onclick="calcolaTempo(3)">Bottone 4</button>
+
+  <p id="data-ora"></p>
+  <p id="tempi"></p>
+
+  <script>
+    let startTime = null;
+    let timeArray = [];
+
+    function mostraDataOra() {
+      const now = new Date();
+      document.getElementById('data-ora').innerHTML = "Data e ora: " + now.toLocaleString();
+
+      if (startTime === null) {
+        startTime = now.getTime(); // Memorizza il tempo del primo clic
+      }
+    }
+
+    function calcolaTempo(buttonNumber) {
+      if (startTime !== null) {
+        const currentTime = new Date().getTime();
+        const elapsedTime = (currentTime - startTime) / 1000; // Calcola il tempo in secondi
+        const timeInSeconds = elapsedTime.toFixed(3); // Tempo in secondi, decimi e millesimi
+
+        timeArray.push(timeInSeconds);
+
+        document.getElementById('tempi').innerHTML = "Tempi tra il primo clic e questo bottone: " + timeArray.join(", ");
+      } else {
+        alert("Premi prima il primo bottone!");
+      }
+    }
+  </script>
+
+</body>
+</html>
