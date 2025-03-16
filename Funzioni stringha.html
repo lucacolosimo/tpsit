@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Stringhe - JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Inserisci due stringhe</h2>
+
+  <form id="stringForm">
+    <label for="stringA">Stringa A:</label><br>
+    <input type="text" id="stringA" name="stringA"><br><br>
+
+    <label for="stringB">Stringa B:</label><br>
+    <input type="text" id="stringB" name="stringB"><br><br>
+
+    <button type="button" onclick="elaboraStringhe()">Elabora</button>
+  </form>
+
+  <h3>Risultati:</h3>
+  <div id="output"></div>
+
+  <script>
+    function elaboraStringhe() {
+      const a = document.getElementById("stringA").value;
+      const b = document.getElementById("stringB").value;
+
+      const lunghezzaA = a.length;
+      const lunghezzaB = b.length;
+
+      const stringaAInvertita = invertiStringa(a);
+      const stringaBInvertita = invertiStringa(b);
+
+      const stringaUnita = unisciStringhe(a, b);
+
+      const sommaLunghezze = lunghezzaA + lunghezzaB;
+      let messaggioB = "";
+      if (lunghezzaB > 20) {
+        messaggioB = "<br><strong>Attenzione:</strong> La stringa B è troppo lunga!";
+      }
+
+      // Mostra i risultati
+      document.getElementById("output").innerHTML = `
+        Lunghezza Stringa A: ${lunghezzaA}<br>
+        Lunghezza Stringa B: ${lunghezzaB}<br><br>
+        
+        Stringa A invertita: ${stringaAInvertita}<br>
+        Stringa B invertita: ${stringaBInvertita}<br><br>
+
+        Unione delle stringhe: ${stringaUnita}<br><br>
+
+        Somma lunghezze: ${sommaLunghezze}
+        ${messaggioB}
+      `;
+    }
+
+    // Funzione per invertire una stringa
+    function invertiStringa(str) {
+      return str.split("").reverse().join("");
+    }
+
+    // Funzione per unire due stringhe
+    function unisciStringhe(str1, str2) {
+      return str1 + str2;
+    }
+  </script>
+
+</body>
+</html>
