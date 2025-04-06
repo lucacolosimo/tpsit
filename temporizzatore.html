@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Div Sovrapposti</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+    .box {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+    }
+    #blu {
+      background-color: blue;
+    }
+    #giallo {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div id="blu" class="box"></div>
+  <div id="giallo" class="box"></div>
+
+  <script>
+    const blu = document.getElementById('blu');
+    const giallo = document.getElementById('giallo');
+
+    function getRandomPosition() {
+      const maxX = window.innerWidth - 100;
+      const maxY = window.innerHeight - 100;
+      return {
+        x: Math.floor(Math.random() * maxX),
+        y: Math.floor(Math.random() * maxY)
+      };
+    }
+
+    function moveDivs() {
+      const posBlu = getRandomPosition();
+      const posGiallo = getRandomPosition();
+
+      blu.style.left = posBlu.x + 'px';
+      blu.style.top = posBlu.y + 'px';
+
+      giallo.style.left = posGiallo.x + 'px';
+      giallo.style.top = posGiallo.y + 'px';
+
+      // Controlla sovrapposizione
+      const rect1 = blu.getBoundingClientRect();
+      const rect2 = giallo.getBoundingClientRect();
+
+      if (
+        rect1.left < rect2.right &&
+        rect1.right > rect2.left &&
+        rect1.top < rect2.bottom &&
+        rect1.bottom > rect2.top
+      ) {
+        blu.style.backgroundColor = 'red';
+        giallo.style.backgroundColor = 'red';
+      } else {
+        blu.style.backgroundColor = 'blue';
+        giallo.style.backgroundColor = 'yellow';
+      }
+    }
+
+    setInterval(moveDivs, 500);
+  </script>
+</body>
+</html>
