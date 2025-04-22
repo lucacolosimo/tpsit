@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeri Casuali Live</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #output {
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            white-space: pre-wrap;
+            text-align: left;
+            font-family: "Courier New", monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generatore di Numeri Casuali</h1>
+    <label for="min">Min:</label>
+    <input type="number" id="min" value="0" step="0.1">
+    <label for="max">Max:</label>
+    <input type="number" id="max" value="1" step="0.1">
+    <button onclick="startGenerazione()">Avvia Generazione</button>
+    <div id="output"></div>
+
+    <script>
+        let numeriArray = [];
+        let rapportiArray = [];
+        let distanzeArray = [];
+        let mediaTeorica = 0;
+        let intervallo = null;
+        let outputDiv = null;
+
+        function startGenerazione() {
+            const min = parseFloat(document.getElementById('min').value);
+            const max = parseFloat(document.getElementById('max').value);
+            outputDiv = document.getElementById('output');
+
+            if (isNaN(min) || isNaN(max) || min >= max) {
+                alert("Inserisci un intervallo valido.");
+                return;
+            }
+
+            // Reset
+            numeriArray = [];
+            rapportiArray = [];
+            distanzeArray = [];
+            outputDiv.textContent = "";
+            mediaTeorica = (max + min) / 2;
+
+            // Avvia setInterval
+            clearInterval(intervallo); // Previene doppia esecuzione
+            intervallo = setInterval(() => generaNumero(min, max), 500);
+        }
+
+        function generaNumero(min, max) {
+            const numeroCasuale = Math.random() * (max - min) + min;
+            numeriArray.push(numeroCasuale);
+
+            let outputRiga = `#${numeriArray.length.toString().padStart(4)} ➤ Num: ${numeroCasuale.toFixed(4)}`;
+
+            // Rapporto con precedente
+            if (numeriArray.length > 1) {
+                const prev = numeriArray[numeriArray.length - 2];
+                if (prev !== 0) {
+                    const rapporto = numeroCasuale / prev;
+                    rapportiArray.push(rapporto);
+                    outputRiga += ` | Rapporto: ${rapporto.toFixed(4)}`;
+                }
+            }
+
+            // Distanza dalla media teorica
+            const distanza = Math.abs(numeroCasuale - mediaTeorica);
+            distanzeArray.push(distanza);
+            outputRiga += ` | Distanza da ${mediaTeorica.toFixed(2)}: ${distanza.toFixed(4)}`;
+
+            // Media ogni 50 numeri
+            if (numeriArray.length % 50 === 0) {
+                const ultimi50 = numeriArray.slice(-50);
+                const media = calcolaMedia(ultimi50);
+                outputRiga += `\n     📊 Media ultimi 50: ${media.toFixed(4)}`;
+            }
+
+            // Aggiungi al box output
+            outputDiv.textContent += outputRiga + "\n";
+            outputDiv.scrollTop = outputDiv.scrollHeight;
+
+            // Stop automatico dopo 10000 numeri
+            if (numeriArray.length >= 10000) {
+                clearInterval(intervallo);
+                outputDiv.textContent += "\n⛔ Generazione completata (10000 numeri).";
+            }
+        }
+
+        function calcolaMedia(arr) {
+            return arr.reduce((a, b) => a + b, 0) / arr.length;
+        }
+    </script>
+</body>
+</html>
