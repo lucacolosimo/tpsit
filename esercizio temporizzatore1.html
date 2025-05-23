@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DIV casuali con sovrapposizione</title>
+<style>
+  #container {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    border: 2px solid black;
+    margin: 20px auto;
+    background: #eee;
+  }
+  .box {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    transition: background-color 0.3s, left 0.5s, top 0.5s;
+  }
+  #box1 {
+    background-color: blue;
+  }
+  #box2 {
+    background-color: yellow;
+  }
+  .overlap {
+    background-color: red !important;
+  }
+</style>
+</head>
+<body>
+
+<div id="container">
+  <div id="box1" class="box"></div>
+  <div id="box2" class="box"></div>
+</div>
+
+<script>
+  const container = document.getElementById('container');
+  const box1 = document.getElementById('box1');
+  const box2 = document.getElementById('box2');
+
+  const boxWidth = 100;
+  const boxHeight = 100;
+  const containerWidth = container.clientWidth;
+  const containerHeight = container.clientHeight;
+
+  function randomPosition() {
+    const left = Math.floor(Math.random() * (containerWidth - boxWidth));
+    const top = Math.floor(Math.random() * (containerHeight - boxHeight));
+    return { left, top };
+  }
+
+  function setPosition(box, pos) {
+    box.style.left = pos.left + 'px';
+    box.style.top = pos.top + 'px';
+  }
+
+  function isOverlap(rect1, rect2) {
+    return !(
+      rect1.right < rect2.left ||
+      rect1.left > rect2.right ||
+      rect1.bottom < rect2.top ||
+      rect1.top > rect2.bottom
+    );
+  }
+
+  function moveBoxes() {
+    const pos1 = randomPosition();
+    const pos2 = randomPosition();
+
+    setPosition(box1, pos1);
+    setPosition(box2, pos2);
+
+    // Controlla sovrapposizione dopo breve delay per permettere il posizionamento
+    setTimeout(() => {
+      const rect1 = box1.getBoundingClientRect();
+      const rect2 = box2.getBoundingClientRect();
+
+      if (isOverlap(rect1, rect2)) {
+        box1.classList.add('overlap');
+        box2.classList.add('overlap');
+      } else {
+        box1.classList.remove('overlap');
+        box2.classList.remove('overlap');
+      }
+    }, 510); // leggermente maggiore della transizione di posizione
+  }
+
+  // Avvia la modalità temporizzata: muovi ogni 2 secondi
+  moveBoxes();
+  setInterval(moveBoxes, 2000);
+</script>
+
+</body>
+</html>
