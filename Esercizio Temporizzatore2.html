@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Applicazioni JavaScript: movimento quadrati</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+
+  /* --- Contenitore e quadrato 1 (percorso orario) --- */
+  #container1 {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #000;
+    margin-bottom: 40px;
+  }
+  #square1 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: blue;
+    top: 0;
+    left: 0;
+  }
+
+  /* --- Contenitore e quadrati 2 (scorrimento rosso) --- */
+  #container2 {
+    width: 440px;
+    display: flex;
+    gap: 10px;
+  }
+  #container2 .square {
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    transition: background-color 0.5s;
+  }
+  #container2 .red {
+    background-color: red !important;
+  }
+</style>
+</head>
+<body>
+
+<h2>1) Quadrato che percorre il bordo in senso orario</h2>
+<div id="container1">
+  <div id="square1"></div>
+</div>
+
+<h2>2) Otto quadrati gialli con scorrimento quadrato rosso</h2>
+<div id="container2">
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+  <div class="square"></div>
+</div>
+
+<script>
+  // --- 1) Movimento quadrato percorso orario ---
+  const square1 = document.getElementById('square1');
+  const container1 = document.getElementById('container1');
+
+  const step = 5;
+  const delay = 50;
+
+  const maxX = container1.clientWidth - square1.clientWidth;
+  const maxY = container1.clientHeight - square1.clientHeight;
+
+  let x = 0, y = 0;
+  let direction = 'east';
+
+  function moveSquare() {
+    switch(direction) {
+      case 'east':
+        if (x < maxX) {
+          x += step;
+          if (x > maxX) x = maxX;
+        } else {
+          direction = 'south';
+        }
+        break;
+      case 'south':
+        if (y < maxY) {
+          y += step;
+          if (y > maxY) y = maxY;
+        } else {
+          direction = 'west';
+        }
+        break;
+      case 'west':
+        if (x > 0) {
+          x -= step;
+          if (x < 0) x = 0;
+        } else {
+          direction = 'north';
+        }
+        break;
+      case 'north':
+        if (y > 0) {
+          y -= step;
+          if (y < 0) y = 0;
+        } else {
+          direction = 'east';
+        }
+        break;
+    }
+    square1.style.left = x + 'px';
+    square1.style.top = y + 'px';
+  }
+  setInterval(moveSquare, delay);
+
+  // --- 2) Scorrimento quadrato rosso tra 8 quadrati gialli ---
+  const squares = document.querySelectorAll('#container2 .square');
+  const total = squares.length;
+  let redIndex = 0;
+
+  function moveRed() {
+    // Rimuove rosso da tutti
+    squares.forEach(sq => sq.classList.remove('red'));
+
+    // Colora il quadrato rosso corrente
+    squares[redIndex].classList.add('red');
+
+    // Incrementa indice rosso
+    redIndex++;
+    if (redIndex >= total) {
+      redIndex = 0;
+    }
+  }
+  setInterval(moveRed, 1000);
+</script>
+
+</body>
+</html>
